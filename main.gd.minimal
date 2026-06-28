@@ -1,0 +1,17 @@
+extends Node3D
+
+func _ready() -> void:
+	if Engine.is_editor_hint(): return
+
+	print("=== _ready() START ===")
+
+	var cube := MeshInstance3D.new()
+	cube.mesh = BoxMesh.new()
+	cube.position = Vector3(0, 10, 0)
+	cube.scale = Vector3(5, 5, 5)
+	var mat := StandardMaterial3D.new()
+	mat.albedo_color = Color.RED
+	cube.material_override = mat
+	add_child(cube)
+
+	print("=== _ready() DONE - red cube at (0,10,0) ===")
